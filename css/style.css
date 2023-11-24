@@ -1,0 +1,314 @@
+/* Style ALL sections */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #FDFAF9;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    padding: 0.5%;
+    margin: 0 auto;
+}
+
+/* .bd {
+    border: 1px solid #712827;
+} */
+
+.bg-color {
+    background-color: #DFB6D2;
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.float-text {
+    position: absolute;
+    bottom: 10px;
+    left: 30%;
+}
+
+.btn {
+    padding: 1%;
+    border: none;
+    font-size: 1rem;
+    border-radius: 3px;
+}
+
+.btn-primary {
+    background-color: #EBAEBF;
+    color: aliceblue;
+}
+
+.btn-primary:hover {
+    color: #BB636D;
+    background-color: #EBAEBF;
+}
+
+.btn-secondary {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 4%;
+    width: 92%;
+    float: right;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.btn-secondary:hover {
+    background-color: rgb(20, 1, 1);
+    color: #FDFAF9;
+}
+
+h4 {
+    color: #712827;
+    font-size: 1.1rem;
+    padding-top: 4px;
+}
+
+h4:hover {
+    color: #BB636D;
+}
+
+h3 {
+    color: #712827;
+    font-size: 1.5rem;
+    background-color: transparent;
+}
+
+h3:hover {
+    color: #BB636D;
+}
+
+h2 {
+    color: #BB636D;
+    font-size: 2rem;
+}
+
+h2:hover {
+    color: #712827;
+}
+
+.float-container {
+    position: relative;
+}
+
+/* Style the Navbar section */
+.logo {
+    width: 7%;
+    float: left;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.menu {
+    line-height: 50px;
+    margin-top: 25px;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu ul li {
+    display: inline;
+    padding: 1%;
+}
+
+.menu ul li a {
+    color: #712827;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+.menu ul li a:hover {
+    color: #EBAEBF;
+}
+
+/* Style the Search section */
+.search input[type="search"] {
+    width: 50%;
+    padding: 1%;
+    font-size: 1rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+/* Style the Banner section */
+
+/* Style the Categories section */
+.categories {
+    padding: 4% 0;
+}
+
+.box-3 {
+    width: 20%;
+    float: left;
+    margin: 2.4%;
+}
+
+/* Style the Menu section */
+.item-menu {
+    padding: 4% 0;
+}
+
+.item-menu-box {
+    float: left;
+    width: 30.9%;
+    margin: 1%;
+}
+
+.item-menu-img {
+    width: 100%;
+    border-radius: 3px;
+}
+
+.price {
+    float: right;
+    color: #E37B7F;
+}
+
+.desc {
+    float: left;
+    color: #d25b5f;
+}
+
+/* Style the Menu section */
+.socialmedia ul {
+    list-style-type: none;
+}
+
+.socialmedia ul li {
+    display: inline;
+    padding: 2%;
+}
+
+.socialmedia ul li a {
+    color: #712827;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.socialmedia ul li a:hover {
+    color: #EBAEBF;
+}
+
+/* Style the Menu section */
+.ftext {
+    font-size: 0.8rem;
+}
+
+/* for Order Section */
+.order {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.item-ordered {
+    width: 30%;
+    float: right;
+    padding: 4%;
+    margin: 4%;
+}
+
+.input-responsive {
+    width: 96%;
+    padding: 1%;
+    margin-bottom: 3%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.order-label {
+    margin-bottom: 1%;
+    font-weight: bold;
+}
+
+/* Make the mobile version */
+@media screen and (max-width: 768px) {
+    .logo {
+        width: 10%;
+        float: left;
+        margin: 1% auto;
+    }
+
+    .menu {
+        line-height: 10px;
+        margin-top: 20px;
+    }
+
+    .menu ul {
+        text-align: right;
+    }
+
+    .menu ul li a {
+        font-size: 1rem;
+    }
+
+    .search input[type="search"] {
+        width: 70%;
+        float: left;
+        padding: 2%;
+        margin-bottom: 5%;
+        margin-top: 5%;
+        margin-left: 5%;
+        font-size: 1rem;
+    }
+
+    .btn {
+        width: 20%;
+        float: left;
+        padding: 2%;
+        margin-bottom: 5%;
+        margin-top: 5%;
+        font-size: 1rem;
+    }
+
+    .box-3 {
+        width: 46%;
+        margin: 4% auto;
+        padding: 2%;
+    }
+
+    .item-menu {
+        padding: 20% 0;
+    }
+
+    .item-menu-box {
+        width: 90%;
+        padding: 2.5%;
+        margin: 2%;
+        margin-top: 10%;
+        margin-bottom: 15%;
+    }
+
+    .btn-secondary {
+        width: 95%;
+        padding: 2.5%;
+        margin-top: 10px;
+    }
+
+    .socialmedia {
+        padding: 2% 0;
+    }
+
+    .order {
+        width: 100%;
+    }
+}
