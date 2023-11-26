@@ -46,12 +46,13 @@
 .main-content {
     background-color: #f1f2f6;
     padding: 3% 0;
+    display: flex;
 }
 
 .cols-4 {
     width: 18%;
     background-color: white ;
-    margin: 1%;
+    margin: 3%;
     padding: 2%;
     float: left;
 }
