@@ -12,6 +12,17 @@
                 echo $_SESSION['add'];
                 unset($_SESSION['add']);
             }
+            if(isset($_SESSION['remove']))
+            {
+                echo $_SESSION['remove'];
+                unset($_SESSION['remove']);
+            }
+
+            if(isset($_SESSION['delete']))
+            {
+                echo $_SESSION['delete'];
+                unset($_SESSION['delete']);
+            }
         ?>
 
         <br><br>
@@ -41,7 +52,7 @@
                    // Get the data and display
                    while($rows=mysqli_fetch_assoc($res))
                    {
-                        $id = $row['id'];
+                        $id = $rows['id'];
                         $title = $rows['title'];
                         $image_name = $rows['image_name'];
                         $featured = $rows['featured'];
@@ -67,7 +78,7 @@
                                 <td><?php echo $active; ?></td>
                                 <td class="">
                                     <a href="#" class="btn btn-secondary">Update Category</a>
-                                    <a href="#" class="btn btn-danger">Delete Category</a>
+                                    <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo basename($image_name); ?>" class="btn btn-danger">Delete Category</a>
                                 </td>
                             </tr>
                         <?php 
