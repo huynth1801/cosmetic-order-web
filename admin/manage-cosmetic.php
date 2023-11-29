@@ -5,8 +5,18 @@
         <h1>Manage Cosmetic</h1>
         <br /> <br />
 
+        <?php 
+            if(isset($_SESSION['add']))
+            {
+                echo "Added";
+                echo $_SESSION['add'];
+                unset($_SESSION['add']);
+            }
+        ?>
                 <!-- Button to add admin -->
-        <a href="#" class="btn btn-primary">Add Product</a>
+        <a href="<?php echo SITEURL; ?>admin/add-cosmetic.php" class="btn btn-primary">Add Product</a>
+        <br><br><br>
+
 
         <br /><br /><br />
         
