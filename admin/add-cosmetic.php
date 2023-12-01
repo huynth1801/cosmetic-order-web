@@ -1,62 +1,62 @@
 <?php include('partials/menu.php') ?>
 
 <?php 
-            // Check whether the button is clicked or not
-            if(isset($_POST['submit']))
-            {
-                // Add the category to the database
-                // echo "Clicked";
-                // 1. Get the Data from Form
-                $title = $_POST['title'];
-                $description = $_POST['description'];
-                // 2. Upload the Image if add
-                $image_name = $_POST['image'];
-                $price = $_POST['price'];
-                $category = $_POST['category'];
+    // Check whether the button is clicked or not
+    if(isset($_POST['submit']))
+    {
+        // Add the category to the database
+        // echo "Clicked";
+        // 1. Get the Data from Form
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        // 2. Upload the Image if add
+        $image_name = $_POST['image'];
+        $price = $_POST['price'];
+        $category = $_POST['category'];
 
-                //  Check whether radio button for featured and active are checked or not
-                if(isset($_POST['featured']))
-                {
-                    $featured = $_POST['featured'];
-                }
-                else
-                {
-                    $featured = "No"; 
-                }
+        //  Check whether radio button for featured and active are checked or not
+        if(isset($_POST['featured']))
+        {
+            $featured = $_POST['featured'];
+        }
+        else
+        {
+            $featured = "No"; 
+        }
 
-                if(isset($_POST['active']))
-                {
-                    $active = $_POST['active'];
-                }
-                else
-                {
-                    $active = "No"; 
-                }
+        if(isset($_POST['active']))
+        {
+            $active = $_POST['active'];
+        }
+        else
+        {
+            $active = "No"; 
+        }
 
-                // 3. Insert into database
-                // For numerical we do not need to pass the value inside quotes '' 
-                $sql2 = "INSERT INTO tbl_cosmetic (title, description, image_name, category_id, featured, active) 
-                VALUES ('$title', '$description', '$image_name', '$category', '$featured', '$active')";
+        // 3. Insert into database
+        // For numerical we do not need to pass the value inside quotes '' 
+        $sql2 = "INSERT INTO tbl_cosmetic (title, desc_cosmetic, price, image_name, category_id, featured, active) VALUES 
+            ('$title', '$description', $price, '$image_name', '$category', '$featured', '$active')
+            ";
 
-                // Execute the query
-                $res2 = mysqli_query($conn, $sql2);
-                // Check whether data is inserted or not
-                if($res2==true)
-                {
-                    // Data inserted successfully
-                    $_SESSION['add'] = "<div class='success'>Product Added Successfully</div>";
-                    header('location:'.SITEURL.'admin/manage-cosmetic.php');
-                }
-                else
-                {
-                    $_SESSION['add'] = "<div class='error'>Failed to add product.</div>";
-                    header('location:'.SITEURL.'admin/manage-cosmetic.php');
-                }
-                
-
-                // 4. Redirect with message to manage cosmetic page
-            }
-        ?>
+        // Execute the query
+        $res2 = mysqli_query($conn, $sql2);
+        // Check whether data is inserted or not
+        if($res2==true)
+        {
+            // Data inserted successfully
+            $_SESSION['add'] = "<div class='success'>Product Added Successfully</div>";
+            header('location:'.SITEURL.'admin/manage-cosmetic.php');
+        }
+        else
+        {
+            $_SESSION['add'] = "<div class='error'>Failed to add product.</div>";
+            header('location:'.SITEURL.'admin/manage-cosmetic.php');
+        }
+        
+        // 4. Redirect with message to manage cosmetic page
+    }
+?>
 
 <div class="main-content">
     <div class="wrapper">
@@ -68,7 +68,7 @@
                 <tr>
                     <td>Title:</td>
                     <td>
-                        <input type="text" name="title" placeholder="Title of the Food">
+                        <input type="text" name="title" placeholder="Title of the Cosmetic">
                     </td>
                 </tr>
 
@@ -160,7 +160,6 @@
                 </tr>
             </table>
         </form>
-
     </div>
 </div>
 

@@ -24,7 +24,7 @@
         else
         {
             //. Failed to Add category
-            $_SESSION['add'] = "<div class='error'>Failed to Add Category</div>";
+            $_SESSION['add'] = "<div class='error'>Failed to add category</div>";
             // Redirect to Manage Category Page
             header('location:'.SITEURL.'admin/add-category.php');
         }
