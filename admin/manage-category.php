@@ -37,12 +37,9 @@
             }
         ?>
 
-        <br><br>
-                <!-- Button to add admin -->
+        <!-- Button to add admin -->
         <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn btn-primary">Add Category</a>
-
-        <br /><br /><br />
-        
+        <br><br>
         <table class="tbl-full">
             
 

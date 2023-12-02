@@ -11,11 +11,39 @@
                     echo $_SESSION['add'];
                     unset($_SESSION['add']);
                 }
+
+                if(isset($_SESSION['remove']))
+                {
+                    echo $_SESSION['remove'];
+                    unset($_SESSION['remove']);
+                }
+
+                if(isset($_SESSION['delete']))
+                {
+                    echo $_SESSION['delete'];
+                    unset($_SESSION['delete']);
+                }
+
+                if(isset($_SESSION['unauthorized']))
+                {
+                    echo $_SESSION['unauthorized'];
+                    unset($_SESSION['unauthorized']);
+                }
+
+                if(isset($_SESSION['no-product-found']))
+                {
+                    echo $_SESSION['no-product-found'];
+                    unset($_SESSION['no-product-found']);
+                }
+
+                if(isset($_SESSION['update']))
+                {
+                    echo $_SESSION['update'];
+                    unset($_SESSION['update']);
+                }
             ?>
-            <br><br>
             <a href="<?php echo SITEURL; ?>admin/add-cosmetic.php" class="btn btn-primary">Add Product</a>
-            <br><br><br>
-            
+            <br><br>
             <table class="tbl-full">
                 <tr>
                     <th>S.N.</th>
@@ -68,8 +96,8 @@
                                     <td><?php echo $featured; ?></td>
                                     <td><?php echo $active; ?></td>
                                     <td>
-                                        <a href="#" class="btn btn-secondary">Update Admin</a>
-                                        <a href="#" class="btn btn-danger">Delete Admin</a>
+                                        <a href="<?php echo SITEURL;?>admin/update-cosmetic.php?id=<?php echo $id; ?>" class="btn-update">Update Product</a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete-cosmetic.php?id=<?php echo $id; ?>&image_name=<?php echo basename($image_name); ?>"  class="btn btn-danger">Delete Product</a>
                                     </td>
                                 </tr>
                             <?php

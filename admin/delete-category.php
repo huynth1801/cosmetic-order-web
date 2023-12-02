@@ -34,13 +34,48 @@ if(isset($_GET['id']) && isset($_GET['image_name']))
     if($res == true)
     {
         // Category deleted successfully
-        $_SESSION['delete'] = "<div class='success'>Category deleted successfully.</div>";
+        // Category Updated
+        $_SESSION['update'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+        Category was deleted Successfully
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+        ";
+        // Thêm đoạn mã JavaScript vào sau thông báo
+        $_SESSION['update'] .= "
+        <script>
+            // Lấy tham chiếu đến phần tử popup
+            const popup = document.getElementById('popup');
+
+            // Tự động đóng popup sau 3 giây
+            setTimeout(function() {
+                popup.classList.remove('show');
+                popup.classList.add('fade');
+            }, 3000);
+        </script>
+        ";
         header('location:'.SITEURL.'admin/manage-category.php');
     }
     else
     {
-        // Failed to delete category
-        $_SESSION['delete'] = "<div class='error'>Failed to delete category.</div>";
+        // Category Update Failed
+        $_SESSION['update'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+            Failed to Delete Product
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+
+        // Thêm đoạn mã JavaScript vào sau thông báo
+        $_SESSION['update'] .= "
+        <script>
+        // Lấy tham chiếu đến phần tử popup
+        const popup = document.getElementById('popup');
+
+        // Tự động đóng popup sau 3 giây
+        setTimeout(function() {
+        popup.classList.remove('show');
+        popup.classList.add('fade');
+        }, 3000);
+        </script>
+        ";
         header('location:'.SITEURL.'admin/manage-category.php');
     }
 }

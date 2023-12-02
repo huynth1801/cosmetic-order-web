@@ -154,13 +154,47 @@
                     if($res2)
                     {
                         // Category Updated
-                        $_SESSION['update'] = "<div class='success'>Category Updated Successfully</div>";
+                        $_SESSION['update'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+                        Category Updated Successfully
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                        ";
+                        // Thêm đoạn mã JavaScript vào sau thông báo
+                        $_SESSION['update'] .= "
+                        <script>
+                            // Lấy tham chiếu đến phần tử popup
+                            const popup = document.getElementById('popup');
+
+                            // Tự động đóng popup sau 3 giây
+                            setTimeout(function() {
+                                popup.classList.remove('show');
+                                popup.classList.add('fade');
+                            }, 3000);
+                        </script>
+                        ";
                         header('location:'.SITEURL.'admin/manage-category.php');
                     }
                     else
                     {
-                        // Failed to update category
-                        $_SESSION['update'] = "<div class='error'>Failed to update category!</div>";
+                        // Category Update Failed
+                        $_SESSION['update'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            Failed to Update Category
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+
+                        // Thêm đoạn mã JavaScript vào sau thông báo
+                        $_SESSION['update'] .= "
+                        <script>
+                        // Lấy tham chiếu đến phần tử popup
+                        const popup = document.getElementById('popup');
+
+                        // Tự động đóng popup sau 3 giây
+                        setTimeout(function() {
+                        popup.classList.remove('show');
+                        popup.classList.add('fade');
+                        }, 3000);
+                        </script>
+                        ";
                         header('location:'.SITEURL.'admin/manage-category.php');
                     }
                 }
