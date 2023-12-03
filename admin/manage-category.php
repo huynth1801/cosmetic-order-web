@@ -40,9 +40,17 @@
         <!-- Button to add admin -->
         <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn btn-primary">Add Category</a>
         <br><br>
-        <table class="tbl-full">
+        <table class="tbl-full ">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Featured</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
             
-
+            <tbody class="table-group-divider table-divider-color ">
             <?php 
                 // Query tp get all Categories from Database
                 $sql = "SELECT * FROM tbl_category";
@@ -66,17 +74,7 @@
                         $image_name = $rows['image_name'];
                         $featured = $rows['featured'];
                         $active = $rows['active'];
-
                         ?>
-                            <tr>
-                                <th>S.N.</th>
-                                <th>Title</th>
-                                <th>Image</th>
-                                <th>Featured</th>
-                                <th>Active</th>
-                                <th>Actions</th>
-                            </tr>
-
                             <tr>
                                 <td><?php echo $sn++; ?></td>
                                 <td><?php echo $title; ?></td>
@@ -86,7 +84,7 @@
                                 <td><?php echo $featured; ?></td>
                                 <td><?php echo $active; ?></td>
                                 <td class="">
-                                    <a href="<?php echo SITEURL;?>admin/update-category.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update Category</a>
+                                    <a href="<?php echo SITEURL;?>admin/update-category.php?id=<?php echo $id; ?>" class="btn-update">Update Category</a>
                                     <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo basename($image_name); ?>" class="btn btn-danger">Delete Category</a>
                                 </td>
                             </tr>
@@ -104,7 +102,7 @@
                     <?php
                 }
             ?>
-
+            </tbody>
         </table>
     </div>
 </div>

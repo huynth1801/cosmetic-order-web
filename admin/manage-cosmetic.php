@@ -46,7 +46,7 @@
             <br><br>
             <table class="tbl-full">
                 <tr>
-                    <th>S.N.</th>
+                    <th>#</th>
                     <th>Title</th>
                     <th>Price</th>
                     <th>Image</th>
@@ -54,7 +54,7 @@
                     <th>Active</th>
                     <th>Actions</th>
                 </tr>
-
+                <tbody class="table-group-divider table-divider-color ">
                 <?php 
                     $sql = "SELECT * FROM tbl_cosmetic";
 
@@ -109,7 +109,7 @@
                     }
 
                 ?>
-
+                </tbody>
             </table>
     </div>
 </div>

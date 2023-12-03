@@ -3,7 +3,6 @@
 <div class="main-content">
     <div class="wrapper">
         <h1>Update Admin</h1>
-
         <br><br>
 
         <?php 
@@ -36,30 +35,25 @@
                 }
             }
         ?>
+        <br><br>
+        <form action=" " method="POST" class="mt-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="full_name" class="form-label">Full Name:</label>
+                        <input type="text" name="full_name" id="full_name" class="form-control" value="<?php echo $full_name; ?>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" name="username" id="username" class="form-control" value="<?php echo $username; ?>">
+                    </div>
+                </div>
+            </div>
 
-        <form action=" " method="POST">
-            <table class="tbl-30">
-                <tr>
-                    <td>Full name:</td>
-                    <td>
-                        <input type="text" name="full_name" id="" value="<?php echo $full_name; ?>">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Username:</td>
-                    <td>
-                        <input type="text" name="username" value="<?php echo $username; ?>">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2">
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <input type="submit" name="submit" value="Update Admin" class="btn btn-info m-2" >
-                    </td>
-                </tr>
-            </table>
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="submit" name="submit" value="Update Admin" class="btn btn-info mt-2">
         </form>
     </div>
 </div>

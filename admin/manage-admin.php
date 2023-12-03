@@ -2,7 +2,7 @@
 
         <!-- Main Content Section Starts -->
         <div class="main-content">
-            <div class="wrapper">
+            <div class="container">
                 <h1>Manage Admin</h1>
 
                 <br />
@@ -53,12 +53,13 @@
                 
                 <table class="tbl-full">
                     <tr>
-                        <th>S.N.</th>
+                        <th>#</th>
                         <th>Full Name</th>
                         <th>Username</th>
                         <th>Actions</th>
                     </tr>
-
+                    
+                    <tbody class="table-group-divider table-divider-color ">
                     <?php 
                     // Query to Get all Admin
                         $sql = "SELECT * FROM tbl_admin";
@@ -94,7 +95,7 @@
                                             <td><?php echo $username; ?></td>
                                             <td>
                                                 <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $id; ?>" class="btn btn-primary">Change Password</a>
-                                                <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update Admin</a>
+                                                <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn-update">Update Admin</a>
                                                 <a href="<?php echo SITEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete Admin</a>
                                             </td>
                                         </tr>
@@ -106,7 +107,8 @@
 
                             }
                         }
-                    ?>              
+                    ?>
+                    </tbody>        
                 </table>
                 
                 <div class="clearfix"></div>

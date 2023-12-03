@@ -1,7 +1,7 @@
 <?php include('partials/menu.php') ?>
 
     <div class="main-content">
-        <div class="wrapper">
+        <div class="container">
             <h1>Update Category</h1>
 
             <br><br>
@@ -45,70 +45,6 @@
                     header('location:'.SITEURL.'admin/manage-category.php');
                 }
             ?>
-
-
-            <form action="" method="POST" enctype="multipart/form-data">
-                <table class="tbl-full">
-                    <tr>
-                        <td>Title: </td>
-                        <td>
-                            <input type="title" name="title" value="<?php echo $title; ?>">
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>Current Image: </td>
-                        <td>
-                            <?php 
-                                if($current_image != "")
-                                {
-                                    // Display the Image
-                                    ?>
-                                        <img src="<?php echo $current_image ?>" alt="" width="150px">
-                                    <?php
-                                }
-                                else
-                                {
-                                    echo "<div class='error'>Image not Added.</div>";
-                                }
-                            ?>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>New Image's URL: </td>
-                        <td>
-                            <input type="text" name="image" placeholder="Image URL">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Featured: </td>
-                        <td>
-                            <input <?php if($featured=="Yes"){echo "checked";} ?> type="radio" name="featured" id="" value="Yes"> Yes
-                            <input <?php if($featured=="No"){echo "checked";} ?> type="radio" name="featured" id="" value="No"> No
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Active: </td>
-                        <td>
-                            <input <?php if($active=="Yes"){echo "checked";} ?> type="radio" name="active" id="" value="Yes"> Yes
-                            <input <?php if($active=="No"){echo "checked";} ?> type="radio" name="active" id="" value="No"> No
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
-                            <input type="submit" value="Update Category" name="submit" class="btn btn-primary ">
-                        </td>
-                    </tr>
-
-                </table>
-
-            </form>
 
             <?php
                 if(isset($_POST['submit']))
@@ -173,6 +109,7 @@
                         </script>
                         ";
                         header('location:'.SITEURL.'admin/manage-category.php');
+                        exit();
                     }
                     else
                     {
@@ -196,9 +133,90 @@
                         </script>
                         ";
                         header('location:'.SITEURL.'admin/manage-category.php');
+                        exit();
                     }
                 }
             ?>
+
+            <div class="container-fluid">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <table class="table">
+                        <tr>
+                            <td>Title: </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="title" name="title" value="<?php echo $title; ?>" class="form-control">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Current Image: </td>
+                            <td>
+                                <?php 
+                                    if($current_image != "")
+                                    {
+                                        // Display the Image
+                                        ?>
+                                            <img src="<?php echo $current_image ?>" alt="" width="150px">
+                                        <?php
+                                    }
+                                    else
+                                    {
+                                        echo "<div class='error'>Image not Added.</div>";
+                                    }
+                                ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>New Image's URL: </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" name="image" placeholder="Image URL" class="form-control">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Featured: </td>
+                            <td>
+                                <div class="form-check">
+                                    <input <?php if($featured=="Yes"){echo "checked";} ?> type="radio" name="featured" id="" value="Yes" class="form-check-input">
+                                    <label class="form-check-label" for="">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input <?php if($featured=="No"){echo "checked";} ?> type="radio" name="featured" id="" value="No" class="form-check-input">
+                                    <label class="form-check-label" for="">No</label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Active: </td>
+                            <td>
+                                <div class="form-check">
+                                    <input <?php if($active=="Yes"){echo "checked";} ?> type="radio" name="active" id="" value="Yes" class="form-check-input">
+                                    <label class="form-check-label" for="">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input <?php if($active=="No"){echo "checked";} ?> type="radio" name="active" id="" value="No" class="form-check-input">
+                                    <label class="form-check-label" for="">No</label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
+                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <input type="submit" value="Update Category" name="submit" class="btn btn-primary w-100">
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
 
         </div>
     </div>
