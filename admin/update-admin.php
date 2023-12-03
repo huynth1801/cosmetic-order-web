@@ -88,14 +88,48 @@
         if($res == true)
         {
             // Query Executed and Admin Updated
-            $_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
+            $_SESSION['update'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+                        Admin Updated Successfully
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                        ";
+                        // Thêm đoạn mã JavaScript vào sau thông báo
+                        $_SESSION['update'] .= "
+                        <script>
+                            // Lấy tham chiếu đến phần tử popup
+                            const popup = document.getElementById('popup');
+
+                            // Tự động đóng popup sau 3 giây
+                            setTimeout(function() {
+                                popup.classList.remove('show');
+                                popup.classList.add('fade');
+                            }, 3000);
+                        </script>
+                        ";
             // Redirect to Manage Admin Page
             header('location:'.SITEURL.'admin/manage-admin.php');
         }
         else
         {
             // Failed to Update Admin
-            $_SESSION['update'] = "<div class='error'>Failed to Delete Admin</div>";
+            $_SESSION['update'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            Failed to Update Admin
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+
+                        // Thêm đoạn mã JavaScript vào sau thông báo
+                        $_SESSION['update'] .= "
+                        <script>
+                        // Lấy tham chiếu đến phần tử popup
+                        const popup = document.getElementById('popup');
+
+                        // Tự động đóng popup sau 3 giây
+                        setTimeout(function() {
+                        popup.classList.remove('show');
+                        popup.classList.add('fade');
+                        }, 3000);
+                        </script>
+                        ";
             header('location:'.SITEURL.'admin/manage-admin.php');
         }
      }

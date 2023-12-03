@@ -15,7 +15,24 @@
     if($res == TRUE) 
     {
         // Query Executed Successfully and Admin Deleted
-        $_SESSION['delete'] = "<div class='success'>Admin Deleted Successfully</div>";
+        $_SESSION['delete'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+            Admin was deleted Successfully
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+        // Thêm đoạn mã JavaScript vào sau thông báo
+        $_SESSION['delete'] .= "
+        <script>
+            // Lấy tham chiếu đến phần tử popup
+            const popup = document.getElementById('popup');
+
+            // Tự động đóng popup sau 3 giây
+            setTimeout(function() {
+                popup.classList.remove('show');
+                popup.classList.add('fade');
+            }, 3000);
+        </script>
+        ";
         // Redirect to Manage Admin Page
         header('location:'.SITEURL.'admin/manage-admin.php');
     }   

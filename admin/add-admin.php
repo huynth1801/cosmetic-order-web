@@ -66,12 +66,46 @@
         // 4. Check whether the Query is Executed data is inserted or not and display appopriate message
         if ($res == TRUE) {
             // Data inserted
-            $_SESSION['add'] = "Admin Added Successfully";
+            $_SESSION['add'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+                Admin was added successfully
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['add'] .= "
+            <script>
+                // Lấy tham chiếu đến phần tử popup
+                const popup = document.getElementById('popup');
+
+                // Tự động đóng popup sau 3 giây
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    popup.classList.add('fade');
+                }, 3000);
+            </script>
+            ";
             // Redirect Page to Manage Admin
             header("Location:".SITEURL.'admin/manage-admin.php');
         } else {
             // Failed to insert data
-            $_SESSION['add'] = "Failed to Add Admin";
+            $_SESSION['add'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+            Failed to add admin
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['add'] .= "
+            <script>
+                // Lấy tham chiếu đến phần tử popup
+                const popup = document.getElementById('popup');
+
+                // Tự động đóng popup sau 3 giây
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    popup.classList.add('fade');
+                }, 3000);
+            </script>
+            ";
             // Redirect Page to Add Admin
             header("Location:".SITEURL.'admin/manage-admin.php');
         }

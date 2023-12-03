@@ -45,12 +45,46 @@
         if($res2==true)
         {
             // Data inserted successfully
-            $_SESSION['add'] = "<div class='success'>Product Added Successfully</div>";
+            $_SESSION['add'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+            Product Added Successfully
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['add'] .= "
+            <script>
+                // Lấy tham chiếu đến phần tử popup
+                const popup = document.getElementById('popup');
+
+                // Tự động đóng popup sau 3 giây
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    popup.classList.add('fade');
+                }, 3000);
+            </script>
+            ";
             header('location:'.SITEURL.'admin/manage-cosmetic.php');
         }
         else
         {
-            $_SESSION['add'] = "<div class='error'>Failed to add product.</div>";
+            $_SESSION['add'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+            Failed to add product.
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['add'] .= "
+            <script>
+                // Lấy tham chiếu đến phần tử popup
+                const popup = document.getElementById('popup');
+
+                // Tự động đóng popup sau 3 giây
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    popup.classList.add('fade');
+                }, 3000);
+            </script>
+            ";
             header('location:'.SITEURL.'admin/manage-cosmetic.php');
         }
         

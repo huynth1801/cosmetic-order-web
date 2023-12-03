@@ -17,14 +17,48 @@
         if($res == true)
         {
             // Query Executed and Category Added
-            $_SESSION['add'] = "<div class='success'>Category Added Successfully.</div>";
+            $_SESSION['add'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+            Category Added Successfully
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['add'] .= "
+            <script>
+                // Lấy tham chiếu đến phần tử popup
+                const popup = document.getElementById('popup');
+
+                // Tự động đóng popup sau 3 giây
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    popup.classList.add('fade');
+                }, 3000);
+            </script>
+            ";
             // Redirect to Manage Category Page
             header('location:'.SITEURL.'admin/manage-category.php');
         }
         else
         {
             //. Failed to Add category
-            $_SESSION['add'] = "<div class='error'>Failed to add category</div>";
+            $_SESSION['add'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+            Failed to add category.
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['add'] .= "
+            <script>
+                // Lấy tham chiếu đến phần tử popup
+                const popup = document.getElementById('popup');
+
+                // Tự động đóng popup sau 3 giây
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    popup.classList.add('fade');
+                }, 3000);
+            </script>
+            ";
             // Redirect to Manage Category Page
             header('location:'.SITEURL.'admin/add-category.php');
         }

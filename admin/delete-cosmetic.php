@@ -34,13 +34,47 @@ if(isset($_GET['id']) && isset($_GET['image_name']))
     if($res == true)
     {
         // Category deleted successfully
-        $_SESSION['delete'] = "<div class='success'>Cosmetic deleted successfully.</div>";
+        $_SESSION['delete'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+                        Product was deleted Successfully
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                        ";
+                        // Thêm đoạn mã JavaScript vào sau thông báo
+                        $_SESSION['delete'] .= "
+                        <script>
+                            // Lấy tham chiếu đến phần tử popup
+                            const popup = document.getElementById('popup');
+
+                            // Tự động đóng popup sau 3 giây
+                            setTimeout(function() {
+                                popup.classList.remove('show');
+                                popup.classList.add('fade');
+                            }, 3000);
+                        </script>
+                        ";
         header('location:'.SITEURL.'admin/manage-cosmetic.php');
     }
     else
     {
         // Failed to delete category
-        $_SESSION['delete'] = "<div class='error'>Failed to delete cosmetic.</div>";
+        $_SESSION['delete'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            Failed to Delete Category
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+
+                        // Thêm đoạn mã JavaScript vào sau thông báo
+                        $_SESSION['delete'] .= "
+                        <script>
+                        // Lấy tham chiếu đến phần tử popup
+                        const popup = document.getElementById('popup');
+
+                        // Tự động đóng popup sau 3 giây
+                        setTimeout(function() {
+                        popup.classList.remove('show');
+                        popup.classList.add('fade');
+                        }, 3000);
+                        </script>
+                        ";
         header('location:'.SITEURL.'admin/manage-cosmetic.php');
     }
 }
