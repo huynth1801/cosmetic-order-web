@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- to make the web reponsive-->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-
-    <title>Daily Cosmetic - Trang chủ</title>
-
-    <!-- link css file-->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <!-- Navbar section START-->
-    <section class="navbar">
-      <div class="container bd">
-        <div class="logo">
-          <a href="index.html">
-            <img
-              src="images/logo.png"
-              alt="logo"
-              class="img-responsive"
-            />
-          </a>
-        </div>
-
-        <div class="menu text-right">
-          <ul>
-            <li>
-              <a href="index.html">Trang chủ</a>
-            </li>
-
-            <li>
-              <a href="categories.html">Khuyến mãi</a>
-            </li>
-
-            <li>
-              <a href="items.html">Sản phẩm</a>
-            </li>
-
-            <li>
-              <a href="#">F Q&A</a>
-            </li>
-          </ul>
-        </div>
-        <br style="clear: both" />
-      </div>
-    </section>
-    <!-- Navbar section END-->
+<?php include("./partials-front/menu.php"); ?>
 
     <!-- Search section START-->
     <section class="search text-center">
@@ -98,54 +47,56 @@
           Khuyến mãi mùa giáng sinh
         </h2>
 
-        <a href="#">
-          <div class="box-3 float-container">
-            <!--box for item 1-->
-            <img
-              src="images/box-item1.png"
-              alt="Item1"
-              class="img-responsive"
-            />
+        <?php 
+          // Create SQL Query to display categories from db
+          $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 4";
+          // Execute the query
+          $res = mysqli_query($conn, $sql);
+          // Count rows to check whether the category is available or not
+          $count = mysqli_num_rows($res);
 
-            <h4 class="text-center">kem nền</h4>
-          </div>
-        </a>
+          if($count > 0)
+          {
+            // Categories available
+            while($row = mysqli_fetch_assoc($res))
+            {
+              // Get the values
+              $id = $row['id'];
+              $title = $row['title'];
+              $image_name = $row['image_name'];
+              ?>
+                <a href="#">
+                  <div class="box-3 float-container">
+                    <!--box for item 1-->
+                    <?php 
+                      // Check whether image is available or not
+                      if($image_name=="") {
+                        echo "<div class='error'>Image not Available</div>";
+                      }
+                      else {
+                        ?>
+                          <img
+                            src="<?php echo $image_name ?>"
+                            alt="Item1"
+                            class="img-responsive"
+                          />
+                      <?php 
+                      }
+                    ?>
 
-        <a href="#">
-          <div class="box-3 float-container">
-            <!--box for item 2-->
-            <img
-              src="images/box-item2.png"
-              alt="Item2"
-              class="img-responsive"
-            />
-            <h4 class="text-center">son tint</h4>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="box-3 float-container">
-            <!--box for item 3-->
-            <img
-              src="images/box-item3.png"
-              alt="Item3"
-              class="img-responsive"
-            />
-            <h4 class="text-center">má hồng</h4>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="box-3 float-container">
-            <!--box for item 4-->
-            <img
-              src="images/box-item4.png"
-              alt="Item4"
-              class="img-responsive"
-            />
-            <h4 class="text-center">son bóng</h4>
-          </div>
-        </a>
+                    <h4 class="text-center"><?php echo $title ?></h4>
+                  </div>
+                </a>
+              <?php
+            }
+          }
+          else
+          {
+            // Categories is not available
+            echo "<div class='error'>Category not Added</div>";
+          }
+        ?>
+        
         <br style="clear: both" />
       </div>
     </section>
@@ -311,38 +262,4 @@
     </section>
     <!-- Menu section END-->
 
-    <!-- Socialmedia section START-->
-    <section class="socialmedia">
-      <div class="container">
-        <ul class="text-center">
-          <!--ul: unordered list-->
-          <li>
-            <!--li: list | list item 1-->
-            <a href="#">Shopee</a>
-          </li>
-
-          <li>
-            <!--list item 2-->
-            <a href="#">Lazada</a>
-          </li>
-
-          <li>
-            <!--list item 3-->
-            <a href="#">Instagram</a>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <!-- Socialmedia section END-->
-
-    <!-- Footer section START-->
-    <section class="footer">
-      <div class="container">
-        <p class="ftext text-center">
-          Đồ án phát triển website
-        </p>
-      </div>
-    </section>
-    <!-- Footer section END-->
-  </body>
-</html>
+<?php include('./partials-front/footer.php'); ?>

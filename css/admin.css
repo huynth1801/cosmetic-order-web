@@ -196,7 +196,7 @@ table tr td {
     color: #fff;
     padding: 15px;
     border-radius: 4px;
-    animation: slideInRight 3.5s, fadeOut 3.5s 4.5s;
+    animation: slideInRight 1.5s, fadeOut 1.5s 4.5s;
 }
 
 @keyframes slideInRight {

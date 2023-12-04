@@ -73,46 +73,49 @@
     <title>Add Category</title>
 </head>
 <body>
-    <h1>Add Category</h1>
-    <form action="" method="post" enctype="multipart/form-data">
-        <table class="tbl-30">
-            <tr>
-                <td>Title: </td>
-                <td>
-                    <input type="text" name="title" placeholder="Category Title" required>
-                </td>
-            </tr>
+    <div class="container">
 
-            <tr>
-                <td>Select Image:</td>
-                <td>
-                    <input type="text" name="image_url" placeholder="Image URL" required>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Featured: </td>
-                <td>
-                    <input type="radio" name="featured" value="Yes"> Yes
-                    <input type="radio" name="featured" value="No"> No
-                </td>
-            </tr>
-
-            <tr>
-                <td>Active: </td>
-                <td>
-                    <input type="radio" name="active" value="Yes">Yes
-                    <input type="radio" name="active" value="No">No
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="2">
-                    <input type="submit" name="submit" value="Add category" class="btn btn-primary">
-                </td>
-            </tr>
-        </table>
-    </form>
+        <h1>Add Category</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            <table class="tbl-30">
+                <tr>
+                    <td>Title: </td>
+                    <td>
+                        <input type="text" name="title" placeholder="Category Title" required>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td>Select Image:</td>
+                    <td>
+                        <input type="text" name="image_url" placeholder="Image URL" required>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td>Featured: </td>
+                    <td>
+                        <input type="radio" name="featured" value="Yes"> Yes
+                        <input type="radio" name="featured" value="No"> No
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td>Active: </td>
+                    <td>
+                        <input type="radio" name="active" value="Yes">Yes
+                        <input type="radio" name="active" value="No">No
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="submit" value="Add category" class="btn btn-primary">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 </html>
 
