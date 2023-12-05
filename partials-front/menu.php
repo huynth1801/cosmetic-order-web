@@ -31,20 +31,20 @@
 
         <section id="overlay"></section>
         <div class="menu text-right" id="menu">
-          <ul class="mobile-menu">
-            <li>
+          <ul class="mobile-menu navbar__links">
+            <li class="navbar_link">
               <a href="<?php echo SITEURL; ?>">Trang chủ</a>
             </li>
 
-            <li>
+            <li class="navbar_link">
               <a href="<?php echo SITEURL; ?>categories.php">Khuyến mãi</a>
             </li>
 
-            <li>
+            <li class="navbar_link">
               <a href="<?php echo SITEURL; ?>items.php">Sản phẩm</a>
             </li>
 
-            <li>
+            <li class="navbar_link">
               <a href="<?php echo SITEURL; ?>order.php">Order</a>
             </li>
           </ul>

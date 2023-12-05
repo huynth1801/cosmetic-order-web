@@ -64,6 +64,7 @@
             </script>
             ";
             header('location:'.SITEURL.'admin/manage-cosmetic.php');
+            exit();
         }
         else
         {
@@ -86,9 +87,8 @@
             </script>
             ";
             header('location:'.SITEURL.'admin/manage-cosmetic.php');
+            exit();
         }
-        
-        // 4. Redirect with message to manage cosmetic page
     }
 ?>
 

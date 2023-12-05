@@ -9,13 +9,13 @@ if (hamburgerMenu) {
   });
 }
 
-document.getElementById('hamburger-menu').addEventListener('click', function() {
-  document.getElementById('menu').classList.toggle('show');
-  document.getElementById('overlay').classList.toggle('show');
+// document.getElementById('hamburger-menu').addEventListener('click', function() {
+//   document.getElementById('menu').classList.toggle('show');
+//   document.getElementById('overlay').classList.toggle('show');
 
-  // Tính toán chiều cao toàn màn hình và áp dụng nó cho menu
-  if (document.getElementById('menu').classList.contains('show')) {
-    var windowHeight = window.innerHeight;
-    document.getElementById('menu').style.height = windowHeight + 'px';
-  }
-});
+//   // Tính toán chiều cao toàn màn hình và áp dụng nó cho menu
+//   if (document.getElementById('menu').classList.contains('show')) {
+//     var windowHeight = window.innerHeight;
+//     document.getElementById('menu').style.height = windowHeight + 'px';
+//   }
+// });

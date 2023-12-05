@@ -1,91 +1,89 @@
 <?php include('partials/menu.php'); ?>
 <?php
-                if(isset($_POST['submit'])) {
-                    $id = $_POST['id'];
-                    $title = $_POST['title'];
-                    $description = $_POST['description'];
-                    $price = $_POST['price'];
-                    $current_image = $_POST['current_image'];
-                    $current_category = $_POST['category'];
-                    $featured = $_POST['featured'];
-                    $active = $_POST['active'];
-                
-                    if(isset($_POST['image']) && !empty($_POST['image'])) {
-                        $new_image = $_POST['image'];
-                        $sql3 = "UPDATE tbl_cosmetic SET image_name='$new_image' WHERE id=$id";
-                        $res_3 = mysqli_query($conn, $sql3);
-                    }
-                    else {
-                        $new_image = $current_image;
-                    }
-                
-                    $sql4 = "UPDATE tbl_cosmetic SET 
-                                title = '$title', 
-                                desc_cosmetic = '$description', 
-                                price = $price, 
-                                category_id = $current_category, 
-                                featured = '$featured', 
-                                active = '$active', 
-                                image_name = '$new_image'
-                            WHERE id = $id";
-                
-                    $res4 = mysqli_query($conn, $sql4);
-                
-                    if($res4) {
-                        // Category Updated
-                        $_SESSION['update'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
-                        Product Updated Successfully
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                        </div>
-                        ";
-                        // Thêm đoạn mã JavaScript vào sau thông báo
-                        $_SESSION['update'] .= "
-                        <script>
-                            // Lấy tham chiếu đến phần tử popup
-                            const popup = document.getElementById('popup');
+    if(isset($_POST['submit'])) {
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $current_image = $_POST['current_image'];
+        $current_category = $_POST['category'];
+        $featured = $_POST['featured'];
+        $active = $_POST['active'];
+    
+        if(isset($_POST['image']) && !empty($_POST['image'])) {
+            $new_image = $_POST['image'];
+            $sql3 = "UPDATE tbl_cosmetic SET image_name='$new_image' WHERE id=$id";
+            $res_3 = mysqli_query($conn, $sql3);
+        }
+        else {
+            $new_image = $current_image;
+        }
+    
+        $sql4 = "UPDATE tbl_cosmetic SET 
+                    title = '$title', 
+                    desc_cosmetic = '$description', 
+                    price = $price, 
+                    category_id = $current_category, 
+                    featured = '$featured', 
+                    active = '$active', 
+                    image_name = '$new_image'
+                WHERE id = $id";
+    
+        $res4 = mysqli_query($conn, $sql4);
+    
+        if($res4) {
+            // Category Updated
+            $_SESSION['update'] = "<div id='popup' class='alert alert-success alert-dismissible fade show' role='alert'>
+            Product Updated Successfully
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            ";
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['update'] .= "
+            <script>
+                // Lấy tham chiếu đến phần tử popup
+                const popup = document.getElementById('popup');
 
-                            // Tự động đóng popup sau 3 giây
-                            setTimeout(function() {
-                                popup.classList.remove('show');
-                                popup.classList.add('fade');
-                            }, 3000);
-                        </script>
-                        ";
-                        header('location:'.SITEURL.'admin/manage-cosmetic.php');
-                        exit(); // Thêm lệnh exit() để dừng việc thực hiện code tiếp theo
-                    }
-                    else {
-                        $_SESSION['update'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
-                            Failed to Update Product
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                        </div>";
+                // Tự động đóng popup sau 3 giây
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    popup.classList.add('fade');
+                }, 3000);
+            </script>
+            ";
+            header('location:'.SITEURL.'admin/manage-cosmetic.php');
+            exit(); // Thêm lệnh exit() để dừng việc thực hiện code tiếp theo
+        }
+        else {
+            $_SESSION['update'] = "<div id='popup' class='alert alert-danger alert-dismissible fade show' role='alert'>
+                Failed to Update Product
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
 
-                        // Thêm đoạn mã JavaScript vào sau thông báo
-                        $_SESSION['update'] .= "
-                        <script>
-                        // Lấy tham chiếu đến phần tử popup
-                        const popup = document.getElementById('popup');
+            // Thêm đoạn mã JavaScript vào sau thông báo
+            $_SESSION['update'] .= "
+            <script>
+            // Lấy tham chiếu đến phần tử popup
+            const popup = document.getElementById('popup');
 
-                        // Tự động đóng popup sau 3 giây
-                        setTimeout(function() {
-                        popup.classList.remove('show');
-                        popup.classList.add('fade');
-                        }, 3000);
-                        </script>
-                        ";
-                        header('location:'.SITEURL.'admin/manage-cosmetic.php');
-                        exit(); // Thêm lệnh exit() để dừng việc thực hiện code tiếp theo
-                    }
-                }
-            ?>
+            // Tự động đóng popup sau 3 giây
+            setTimeout(function() {
+            popup.classList.remove('show');
+            popup.classList.add('fade');
+            }, 3000);
+            </script>
+            ";
+            header('location:'.SITEURL.'admin/manage-cosmetic.php');
+            exit(); // Thêm lệnh exit() để dừng việc thực hiện code tiếp theo
+        }
+    }
+?>
 
 
     <div class="main-content">
         <div class="wrapper">
             <h1>Update Product</h1>
-
             <br><br>
-
             <?php
             // Kiểm tra xem id đã được đặt hay chưa
                 if(isset($_GET['id'])) {

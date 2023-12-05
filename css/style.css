@@ -327,16 +327,20 @@ h2:hover {
         height: 100vh;
     }
 
-    li {
+    .navbar_link {
         background-color: #dfe4ea;
     }
 
-    ul {
+    .navbar__links {
         background-color: #dfe4ea;
     }
 
     .menu ul li a {
         background-color: #dfe4ea;
+    }
+
+    .social__name {
+        background-color: #FDFAF9;
     }
   
     /* .hamburger-menu {

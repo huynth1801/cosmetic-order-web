@@ -3,17 +3,17 @@
       <div class="container">
         <ul class="text-center">
           <!--ul: unordered list-->
-          <li>
+          <li class="social__name">
             <!--li: list | list item 1-->
             <a href="#">Shopee</a>
           </li>
 
-          <li>
+          <li class="social__name">
             <!--list item 2-->
             <a href="#">Lazada</a>
           </li>
 
-          <li>
+          <li class="social__name">
             <!--list item 3-->
             <a href="#">Instagram</a>
           </li>
