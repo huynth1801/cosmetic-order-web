@@ -7,15 +7,12 @@
     text-decoration: none;
 }
 
-.container {
+/* .container {
     width: 90%;
     padding: 0.5%;
     margin: 0 auto;
-}
-
-/* .bd {
-    border: 1px solid #712827;
 } */
+
 
 .bg-color {
     background-color: #DFB6D2;
@@ -40,7 +37,6 @@
 }
 
 .btn {
-    padding: 1%;
     border: none;
     font-size: 1rem;
     border-radius: 3px;
@@ -56,11 +52,11 @@
     background-color: #EBAEBF;
 }
 
-.btn-secondary {
+.btn-order {
     border: 1px solid black;
     border-radius: 3px;
-    padding: 4%;
-    width: 92%;
+    padding: 18px;
+    width: 100%;
     float: right;
     color: black;
     text-align: center;
@@ -68,15 +64,28 @@
     font-size: 1.1rem;
 }
 
-.btn-secondary:hover {
+.btn-order:hover {
     background-color: rgb(20, 1, 1);
     color: #FDFAF9;
+}
+
+.button__order {
+    padding-top: 16px;
+}
+
+.items-info {
+    padding-top: 16px;
+}
+
+p {
+    margin: 0;
 }
 
 h4 {
     color: #712827;
     font-size: 1.1rem;
-    padding-top: 4px;
+    text-decoration: none;
+    margin: 0;
 }
 
 h4:hover {
@@ -96,6 +105,11 @@ h3:hover {
 h2 {
     color: #BB636D;
     font-size: 2rem;
+    margin-bottom: 0;
+}
+
+a {
+    list-style-type: none;
 }
 
 h2:hover {
@@ -116,10 +130,10 @@ h2:hover {
     cursor: pointer;
 }
 
-.menu {
+/* .menu {
     line-height: 50px;
     margin-top: 25px;
-}
+} */
 
 .menu ul {
     list-style-type: none;
@@ -127,7 +141,6 @@ h2:hover {
 
 .menu ul li {
     display: inline;
-    padding: 1%;
 }
 
 .menu ul li a {
@@ -156,21 +169,22 @@ h2:hover {
     padding: 4% 0;
 }
 
-.box-3 {
+/* .box-3 {
     width: 20%;
     float: left;
     margin: 2.4%;
-}
+} */
 
 /* Style the Menu section */
 .item-menu {
-    padding: 4% 0;
+    padding: 12px 0;
 }
 
 .item-menu-box {
     float: left;
     width: 30.9%;
     margin: 1%;
+    padding-bottom: 24px;
 }
 
 .item-menu-img {
@@ -179,6 +193,7 @@ h2:hover {
 }
 
 .price {
+    font-size: 18px;
     float: right;
     color: #E37B7F;
 }
@@ -240,6 +255,10 @@ h2:hover {
     font-weight: bold;
 }
 
+ul {
+    margin: 0;
+}
+
 /* Make the mobile version */
 @media screen and (max-width: 768px) {
     .logo {
@@ -262,7 +281,7 @@ h2:hover {
         font-size: 1rem;
     }
 
-    .search input[type="search"] {
+    /* .search input[type="search"] {
         width: 70%;
         float: left;
         padding: 2%;
@@ -270,22 +289,19 @@ h2:hover {
         margin-top: 24px;
         margin-left: 5%;
         font-size: 1rem;
-    }
+    } */
 
     .btn {
         width: 20%;
         float: left;
-        padding: 2%;
-        margin-bottom: 5%;
-        margin-top: 5%;
         font-size: 1rem;
     }
 
-    .box-3 {
+    /* .box-3 {
         width: 46%;
         margin: 4% auto;
         padding: 2%;
-    }
+    } */
 
     .item-menu {
         padding: 20% 0;
@@ -293,18 +309,23 @@ h2:hover {
 
     .item-menu-box {
         width: 90%;
-        padding: 2.5%;
+        padding: 8px;
         margin: 2%;
         margin-top: 10%;
         margin-bottom: 15%;
     }
 
-    .btn-secondary {
+    .btn-order {
         width: 95%;
         padding: 2.5%;
         margin-top: 10px;
     }
-
+    
+    .btn-confirm {
+        width: 95%;
+        padding: 2.5%;
+        margin-top: 10px;
+    }
     .socialmedia {
         padding: 2% 0;
     }
@@ -331,6 +352,10 @@ h2:hover {
         background-color: #dfe4ea;
     }
 
+    .cart-icon {
+        background-color: #dfe4ea;
+    }
+
     .navbar__links {
         background-color: #dfe4ea;
     }
@@ -343,21 +368,6 @@ h2:hover {
         background-color: #FDFAF9;
     }
   
-    /* .hamburger-menu {
-      display: block;
-      cursor: pointer;
-      float: right;
-      margin-top: 15px;
-      margin-right: 10px;
-    }
-  
-    .hamburger-menu span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: black;
-      margin-bottom: 5px;
-    } */
 
     #overlay {
         position: fixed;

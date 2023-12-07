@@ -12,435 +12,65 @@
     <!-- Search section END-->
 
     <!-- Menu section START-->
-    <section class="item-menu">
+    <section class="item-menu pt-3">
       <div class="container">
         <h2 class="text-center"></h2>
-        <br />
+        <?php 
+            // Create SQL qiuery to get foods based on selected category
+            $sql = "SELECT * FROM tbl_cosmetic WHERE active='Yes' AND featured='Yes'";
+            // Execute the Query 
+            $res = mysqli_query($conn, $sql);
+            // Count the rows
+            $count = mysqli_num_rows($res);
+            // Check whether cosmetic is available or not
+            if($count > 0) {
+              // Cosmetic is available
+              while($row=mysqli_fetch_assoc($res)) {
+                $id = $row['id'];
+                $title = $row['title'];
+                $price = $row['price'];
+                $desc_cosmetic = $row['desc_cosmetic'];
+                $image_name = $row['image_name'];
+                ?>
+                  <div class="item-menu-box mb-3">
+                    <!--menu for item 4-->
+                    <div class="item-menu-img">
+                      <?php 
+                          // Check whether image is available or not
+                          if($image_name=="") {
+                            echo "<div class='error'>Image not Available</div>";
+                          }
+                          else {
+                            ?>
+                              <img
+                                src="<?php echo $image_name ?>"
+                                alt="Item <?php echo $id ?>"
+                                class="img-responsive img-fluid "
+                              />
+                            <?php 
+                          }
+                        ?>
+                    </div>
 
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 1-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-1.png"
-              alt="item1"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>so delux</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 2-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-2.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 1-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-1.png"
-              alt="item1"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>so delux</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 2-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-2.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 3-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-3.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 5-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-5.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 6-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-6.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 5-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-5.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 4-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-4.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-
-        <div class="item-menu-box">
-          <!--menu for item 6-->
-          <div class="item-menu-img">
-            <img
-              src="images/item-6.png"
-              alt="item2"
-              class="img-responsive"
-            />
-          </div>
-
-          <div class="item-menu-desc">
-            <h4>hunny pot</h4>
-            <p class="desc">lux lipstick set</p>
-
-            <p class="price">$20.00</p>
-            <br style="clear: both" />
-            <br />
-            <a href="#" class="btn btn-secondary"
-              >Đặt ngay</a
-            >
-            <br />
-            <br style="clear: both" />
-          </div>
-        </div>
-        <br style="clear: both" />
+                    <div class="item-menu-desc">
+                      <div class="d-flex justify-content-between align-items-center items-info">
+                        <h4><?php echo $title ?></h4>
+                        <!-- <p class="desc">lux lipstick set</p> -->
+                        <h4 class="price">$<?php echo $price ?></h4>
+                      </div>
+                      <div class="button__order">
+                        <a href="<?php echo SITEURL ?>order.php?cosmetic_id=<?php echo $id; ?>" class="btn btn-order">Đặt ngay</a>
+                      </div>
+                    </div>
+                  </div>
+                <?php 
+              }
+            }
+            else {
+              echo "<div class-'error'>Cosmetic not Available</div>";
+            }
+        ?>
+      
       </div>
     </section>
     <!-- Menu section END-->

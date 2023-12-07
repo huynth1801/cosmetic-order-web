@@ -1,82 +1,151 @@
 <?php include('./partials-front/menu.php'); ?>
     <!-- Navbar section END-->
 
-    <!-- item ordered Section Starts Here -->
-    <section class="food">
-      <div class="container">
-        <h2 class="text-center">Đặt hàng</h2>
+    <!-- Navbar Section Ends Here -->
+    <?php 
+      if(isset($_GET['cosmetic_id'])) {
+        $cosmetic_id = $_GET['cosmetic_id'];
+        // Get the detail of selected product
+        $sql = "SELECT * FROM tbl_cosmetic WHERE id=$cosmetic_id";
+        // Execute the Query
+        $res = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($res);
+        if($count==1) {
+          // We have data
+          $row = mysqli_fetch_assoc($res);
+          $title = $row['title'];
+          $price = $row['price'];
+          $image_name = $row['image_name'];
+        }
+        else {
+          header('location:'.SITEURL);
+        }
+      }
+      else {
+        header('location:'.SITEURL);
+      }
+    ?>
 
-        <form action="#" class="order">
-          <fieldset class="item-ordered">
-            <legend>Sản phẩm đã chọn</legend>
+    <!-- fOOD sEARCH Section Starts Here -->
+    <section class="cosmetic p-3">
+        <div class="container">
 
-            <div class="item-menu-img">
-              <img
-                src="images/item-2.png"
-                alt="item2"
-                class="img-responsive"
-              />
-            </div>
+            <h2 class="text-center text-black pb-3">Fill this form to confirm your order.</h2>
 
-            <div class="item-menu-desc">
-              <h4>hunny pot</h4>
-              <p class="desc">lux lipstick set</p>
+            <form action="" class="order" method="post">
+                <fieldset class="item-ordered">
+                    <h3>Selected Products</h3>
 
-              <p class="price">$20.00</p>
-            </div>
-          </fieldset>
+                    <div class="item-menu-img">
+                    <?php 
+                        // Check whether image is available or not
+                        if($image_name=="") {
+                          echo "<div class='error'>Image not Available</div>";
+                        }
+                        else {
+                          ?>
+                            <img
+                              src="<?php echo $image_name ?>"
+                              alt="Item1"
+                              class="img-responsive rounded-3 img-fluid"
+                            />
+                        <?php 
+                        }
+                      ?>
+                    </div>
 
-          <fieldset class="item-ordered">
-            <legend>Thông tin thanh toán</legend>
-            <div class="order-label">Tên</div>
-            <input
-              type="text"
-              name="full-name"
-              placeholder="Trà My"
-              class="input-responsive"
-              required
-            />
+                    <div class="item-menu-desc">
+                        <h3><?php echo $title; ?></h3>
+                        <input type="hidden" name="cosmetic" value="<?php echo $title; ?>">
+                        <p class="food-price">$<?php echo $price; ?></p>
+                        <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <div class="order-label">Số điện thoại</div>
-            <input
-              type="tel"
-              name="contact"
-              placeholder="098xxxxxxx"
-              class="input-responsive"
-              required
-            />
+                        <div class="form-group">
+                            <label for="qty" class="order-label">Quantity</label>
+                            <input type="number" id="qty" name="qty" class="form-control input-responsive" value="1" required min="0">
+                        </div>
 
-            <div class="order-label">Email</div>
-            <input
-              type="email"
-              name="email"
-              placeholder="@gmail.com"
-              class="input-responsive"
-              required
-            />
+                    </div>
 
-            <div class="order-label">Địa chỉ</div>
-            <textarea
-              name="address"
-              rows="10"
-              placeholder="ueh cơ sở B, Đào Duy Từ"
-              class="input-responsive"
-              required
-            ></textarea>
+                </fieldset>
 
-            <input
-              type="submit"
-              name="submit"
-              value="Thanh toán"
-              class="btn btn-secondary"
-            />
-          </fieldset>
-        </form>
-        <br style="clear: both" />
-      </div>
+                <fieldset>
+                    <legend>Delivery Details</legend>
+                    <div class="form-group">
+                        <label for="full-name" class="order-label">Full Name</label>
+                        <input type="text" id="full-name" name="full-name" placeholder="Your full name" class="form-control input-responsive border border-dark border-1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact" class="order-label">Phone Number</label>
+                        <input type="tel" id="contact" name="contact" placeholder="E.g. 84123456" class="form-control input-responsive border border-dark border-1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="order-label">Email</label>
+                        <input type="email" id="email" name="email" placeholder="E.g. abc@gmail.com" class="form-control input-responsive border border-dark border-1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address" class="order-label">Address</label>
+                        <textarea id="address" name="address" rows="10" placeholder="E.g. Street, City, Country" class="form-control input-responsive border border-dark border-1" required></textarea>
+                    </div>
+
+                    <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary w-50 ">
+                    <!-- <div class="d-flex justify-content-center pt-3">
+                    </div> -->
+                </fieldset>
+            </form>
+            <?php 
+              if(isset($_POST['submit'])) {
+                // Get all the details from forms
+                $cosmetic = $_POST['cosmetic'];
+                $price = $_POST['price'];
+                $qty = $_POST['qty'];
+                $total = $price * $qty;
+                
+                $order_date = date("Y-m-d h:i:sa");
+                $status = "Ordered";
+                $customer_name = $_POST['full-name'];
+                $customer_contact = $_POST['contact'];
+                $customer_email = $_POST['email'];
+                $customer_address = $_POST['address'];
+
+                // Save the order in database
+                $sql2 = "INSERT INTO tbl_order (cosmetic, price, qty, total, 
+                order_date, status, customer_name, customer_contact , customer_email, customer_address) VALUES 
+                          ('$cosmetic',
+                          $price,
+                          $qty,
+                          $total,
+                          '$order_date',
+                          '$status',
+                          '$customer_name',
+                          '$customer_contact',
+                          '$customer_email',
+                          '$customer_address')
+                ";
+                // echo $sql2;
+
+                mysqli_close($conn);
+                // Execute the query
+                $res2 = mysqli_query($conn, $sql2);
+                // Check whether query executed successfully or not
+                if($res2 == true) {
+                  // Query executed and order save
+                  $_SESSION['order'] = "<div class='success'>Products ordered successfully !</div>";
+                  header('location:'.SITEURL);
+                  exit();
+                }
+                else {
+                  $_SESSION['order'] = "<div class='error'>Failed to order product</div>";
+                  echo "Lỗi: " . mysqli_error($conn);
+                  // header('location:'.SITEURL);
+                  exit();
+                }
+              }
+            ?>
+        </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
-
-    <!-- Socialmedia section START-->
 <?php include('./partials-front/footer.php'); ?>
-
