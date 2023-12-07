@@ -126,21 +126,19 @@
                           '$customer_address')
                 ";
                 // echo $sql2;
-
-                mysqli_close($conn);
                 // Execute the query
                 $res2 = mysqli_query($conn, $sql2);
                 // Check whether query executed successfully or not
                 if($res2 == true) {
                   // Query executed and order save
                   $_SESSION['order'] = "<div class='success'>Products ordered successfully !</div>";
-                  header('location:'.SITEURL);
+                  header('Location:'.SITEURL);
                   exit();
                 }
                 else {
-                  $_SESSION['order'] = "<div class='error'>Failed to order product</div>";
                   echo "Lỗi: " . mysqli_error($conn);
-                  // header('location:'.SITEURL);
+                  $_SESSION['order'] = "<div class='error'>Failed to order product</div>";
+                  header('Location:'.SITEURL);
                   exit();
                 }
               }

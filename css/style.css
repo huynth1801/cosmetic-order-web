@@ -219,6 +219,25 @@ h2:hover {
     font-size: 1rem;
 }
 
+.pagination {
+    margin-top: 20px;
+  }
+  
+.pagination a {
+display: inline-block;
+padding: 8px 16px;
+text-decoration: none;
+color: #000;
+border: 1px solid #ddd;
+margin-right: 5px;
+}
+  
+.pagination a.active {
+background-color: #4CAF50;
+color: white;
+border: 1px solid #4CAF50;
+}
+
 .socialmedia ul li a:hover {
     color: #EBAEBF;
 }
@@ -258,6 +277,7 @@ h2:hover {
 ul {
     margin: 0;
 }
+
 
 /* Make the mobile version */
 @media screen and (max-width: 768px) {
