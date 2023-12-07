@@ -19,10 +19,60 @@
         }
         else {
           header('location:'.SITEURL);
+          exit();
         }
       }
       else {
         header('location:'.SITEURL);
+        exit();
+      }
+    ?>
+
+    <?php 
+      if(isset($_POST['submit'])) {
+        // Get all the details from forms
+        $cosmetic = $_POST['cosmetic'];
+        $price = $_POST['price'];
+        $qty = $_POST['qty'];
+        $total = $price * $qty;
+        
+        $order_date = date("Y-m-d h:i:sa");
+        $status = "Ordered";
+        $customer_name = $_POST['full-name'];
+        $customer_contact = $_POST['contact'];
+        $customer_email = $_POST['email'];
+        $customer_address = $_POST['address'];
+
+        // Save the order in database
+        $sql2 = "INSERT INTO tbl_order (cosmetic, price, qty, total, 
+        order_date, status, customer_name, customer_contact , customer_email, customer_address) VALUES 
+                  ('$cosmetic',
+                  $price,
+                  $qty,
+                  $total,
+                  '$order_date',
+                  '$status',
+                  '$customer_name',
+                  '$customer_contact',
+                  '$customer_email',
+                  '$customer_address')
+        ";
+        // echo $sql2;
+        // Execute the query
+        $res2 = mysqli_query($conn, $sql2);
+        // Check whether query executed successfully or not
+        if($res2 == true) {
+          // Query executed and order save
+          $_SESSION['order'] = "<div class='success text-success p-2 text-center '>Products ordered successfully !</div>";
+          header('Location:'.SITEURL);
+          exit();
+        }
+        else {
+          echo "Lỗi: " . mysqli_error($conn);
+          $_SESSION['order'] = "<div class='error text-danger p-2 text-center '>Failed to order product</div>";
+          header('Location:'.SITEURL);
+          exit();
+        }
       }
     ?>
 
@@ -96,53 +146,6 @@
                     </div> -->
                 </fieldset>
             </form>
-            <?php 
-              if(isset($_POST['submit'])) {
-                // Get all the details from forms
-                $cosmetic = $_POST['cosmetic'];
-                $price = $_POST['price'];
-                $qty = $_POST['qty'];
-                $total = $price * $qty;
-                
-                $order_date = date("Y-m-d h:i:sa");
-                $status = "Ordered";
-                $customer_name = $_POST['full-name'];
-                $customer_contact = $_POST['contact'];
-                $customer_email = $_POST['email'];
-                $customer_address = $_POST['address'];
-
-                // Save the order in database
-                $sql2 = "INSERT INTO tbl_order (cosmetic, price, qty, total, 
-                order_date, status, customer_name, customer_contact , customer_email, customer_address) VALUES 
-                          ('$cosmetic',
-                          $price,
-                          $qty,
-                          $total,
-                          '$order_date',
-                          '$status',
-                          '$customer_name',
-                          '$customer_contact',
-                          '$customer_email',
-                          '$customer_address')
-                ";
-                // echo $sql2;
-                // Execute the query
-                $res2 = mysqli_query($conn, $sql2);
-                // Check whether query executed successfully or not
-                if($res2 == true) {
-                  // Query executed and order save
-                  $_SESSION['order'] = "<div class='success'>Products ordered successfully !</div>";
-                  header('Location:'.SITEURL);
-                  exit();
-                }
-                else {
-                  echo "Lỗi: " . mysqli_error($conn);
-                  $_SESSION['order'] = "<div class='error'>Failed to order product</div>";
-                  header('Location:'.SITEURL);
-                  exit();
-                }
-              }
-            ?>
         </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
