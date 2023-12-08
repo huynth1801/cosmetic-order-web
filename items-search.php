@@ -6,7 +6,9 @@
       <div class="container">
         <div class="container">
           <?php 
-            $search = $_POST['search'];
+            // $search = $_POST['search'];
+            $search = mysqli_real_escape_string($conn, ($_POST['search']));
+
           ?>
           <h2>Sản phẩm tìm kiếm <a href="#" class="text-decoration-none text-black-50 font-weight-bold">"<?php echo $search; ?>"</a></h2>
         </div>
