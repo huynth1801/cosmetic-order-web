@@ -64,7 +64,7 @@
                                 <td><?php echo $customer_email; ?></td>
                                 <td><?php echo $customer_address; ?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL;?>admin/update-cosmetic.php?id=<?php echo $id; ?>" class="btn-update">Update Product</a>
+                                    <a href="<?php echo SITEURL;?>admin/update-order.php?id=<?php echo $id; ?>" class="btn-update">Update Order</a>
                                    
                                 </td>
                             </tr>
