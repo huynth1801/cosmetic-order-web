@@ -46,6 +46,8 @@ if (isset($_POST['cosmetic_id'])) {
         <?php
         $cart = $_SESSION['cart'];
         $totalPrice = 0; // Khởi tạo biến tổng số tiền
+        // Tính toán số lượng sản phẩm trong giỏ hàng
+        $cartItemCount = count($_SESSION['cart']);
         foreach ($cart as $cosmetic_id) {
           // Truy vấn thông tin sản phẩm từ cơ sở dữ liệu
           $sql = "SELECT * FROM tbl_cosmetic WHERE id = '$cosmetic_id'";
@@ -111,6 +113,7 @@ if (isset($_POST['cosmetic_id'])) {
           total += subtotal;
         }
       }
+
       document.getElementById('total-price').innerText = "$" + total.toFixed(2);
     }
 
