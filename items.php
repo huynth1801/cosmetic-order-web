@@ -97,8 +97,8 @@
   <!-- Pagination section START -->
 </section>
 
-<section class="container d-flex jutify-content-center page">
-  <div class="container">
+<section class="container-fluid d-flex jutify-content-center page">
+  <div class="container-fluid">
       <nav aria-label="Page navigation example" class="">
         <ul class="pagination justify-content-center">
           <li class="page-item">
