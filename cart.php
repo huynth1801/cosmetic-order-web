@@ -30,7 +30,7 @@ if (isset($_POST['cosmetic_id'])) {
 
 <body>
 
-  <div class="container mt-5">
+  <div class="container">
     <h1>Giỏ hàng</h1>
 
     <table class="table">
