@@ -50,25 +50,28 @@ if (isset($_POST['cosmetic_id'])) {
           // Truy vấn thông tin sản phẩm từ cơ sở dữ liệu
           $sql = "SELECT * FROM tbl_cosmetic WHERE id = '$cosmetic_id'";
           $result = $conn->query($sql);
-        
+      
           // Kiểm tra và hiển thị thông tin sản phẩm
           if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-              // Hiển thị thông tin sản phẩm
-              echo "<tr data-cosmetic-id='" . $row["id"] . "'>";
-              echo "<td>" . $row["title"] . "</td>";
-              echo "<td><input type='number' class='form-control quantity-input' value='1' min='1'></td>";
-              echo "<td>" . $row["price"] . "</td>";
-              echo "<td><button class='btn btn-danger btn-sm' onclick='deleteCartItem(" . $row["id"] . ")'>Xóa</button></td>";
-              echo "</tr>";
-        
-              // Thêm sản phẩm vào session 'cart' nếu chưa tồn tại
-              if (!in_array($cosmetic_id, $_SESSION['cart'])) {
-                $_SESSION['cart'][] = $cosmetic_id;
+              while ($row = $result->fetch_assoc()) {
+                  // Hiển thị thông tin sản phẩm
+                  echo "<tr data-cosmetic-id='" . $row["id"] . "'>";
+                  echo "<td>" . $row["title"] . "</td>";
+                  echo "<td><input type='number' class='form-control quantity-input' value='1' min='1'></td>";
+                  echo "<td>" . $row["price"] . "</td>";
+                  echo "<td><button class='btn btn-danger btn-sm' onclick='deleteCartItem(" . $row["id"] . ")'>Xóa</button></td>";
+                  echo "</tr>";
+      
+                  // Thêm sản phẩm vào session 'cart' nếu chưa tồn tại
+                  if (!in_array($cosmetic_id, $_SESSION['cart'])) {
+                      $_SESSION['cart'][] = $cosmetic_id;
+                  }
+      
+                  // Cập nhật tổng số tiền
+                  $totalPrice += $row["price"];
               }
-            }
           } else {
-            echo "<tr><td colspan='4'>Không tìm thấy thông tin sản phẩm.</td></tr>";
+              echo "<tr><td colspan='4'>Không tìm thấy thông tin sản phẩm.</td></tr>";
           }
         }
         ?>
@@ -82,8 +85,8 @@ if (isset($_POST['cosmetic_id'])) {
     </table>
 
     <div class="text-right">
-      <a href="#" class="btn btn-primary">Tiếp tục mua hàng</a>
-      <a href="#" class="btn btn-success">Thanh toán</a>
+      <a href="<?php echo SITEURL ?>index.php" class="btn btn-primary">Tiếp tục mua hàng</a>
+      <a href="<?php echo SITEURL ?>order.php" class="btn btn-success">Thanh toán</a>
     </div>
 
   </div>
