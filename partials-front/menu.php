@@ -1,7 +1,11 @@
 <?php include('config/constants.php'); ?>
 <?php 
-  // Tính toán số lượng hàng hóa trong giỏ hàng
-  $cartItemCount = count($_SESSION['cart']);
+  $cartItemCount = 0; // Mặc định số lượng hàng hóa trong giỏ hàng là 0
+
+  if (isset($_SESSION['cart'])) {
+      $cart = $_SESSION['cart'];
+      $cartItemCount = count($cart);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
